@@ -8,7 +8,7 @@ React + TypeScript + Vite frontend for an Express API.
 2. Open this folder in VS Code.
 3. Run `npm install`.
 4. Copy `.env.example` to `.env`.
-5. Set `VITE_API_URL` to the deployed Render **backend web-service URL**, not the PostgreSQL connection string. The frontend adds the backend's `/api` prefix automatically, whether or not it is already included in the URL.
+5. Set `VITE_API_URL` to the deployed Render **backend web-service URL**, not the PostgreSQL connection string. The frontend adds the backend's `/api` prefix automatically, whether or not it is already included in the URL. The current backend URL is `https://ecommercy-backend.onrender.com`.
 6. Run `npm run dev`.
 
 ## Expected backend endpoints
@@ -35,4 +35,5 @@ This project assumes:
 - The frontend expects the backend profile endpoint to return the role on `req.user`.
 - Brevo remains a backend service; its API key must never be placed in the frontend `.env`.
 - The backend allows the deployed Vercel and Render origins and `http://localhost:5173` by default. For a different frontend domain, set `FRONTEND_URL` on the backend service to its exact origin (or a comma-separated list of origins), without a path.
+- In Vercel, set `VITE_API_URL` to the same backend web-service URL, then redeploy. A stale or incorrect URL can return a 404 without CORS headers, which browsers may report as a CORS error.
 - This frontend does not use the PostgreSQL connection string directly. Only the backend connects to the database.
